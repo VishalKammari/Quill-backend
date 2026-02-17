@@ -2,7 +2,8 @@ const express = require('express');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const app = express();
-app.set("trust proxy", 1);
+app.set("trust proxy", true);
+
 const cors = require('cors');
 
 const multer = require('multer');
