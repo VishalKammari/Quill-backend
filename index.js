@@ -9,33 +9,12 @@ const multer = require('multer');
 const path=require("path")
 app.use("/images",express.static(path.join(__dirname,"/images")))
 
-
-const allowedOrigins = [
-  "https://quill-git-main-visha9764s-projects.vercel.app",
-  "quill-tan-nine.vercel.app",
-  "https://quill-bp03sa5ys-visha9764s-projects.vercel.app"
-];
-
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     if (!origin) return callback(null, true);
-
-//     if (allowedOrigins.indexOf(origin) === -1) {
-//       return callback(new Error("CORS not allowed"), false);
-//     }
-
-//     return callback(null, true);
-//   },
-//   credentials: true
-// }));
-
-
 app.use(cors({
-  origin: true,
+  origin: [
+    "https://quill-git-main-visha9764s-projects.vercel.app"
+  ],
   credentials: true
 }));
-
-
 
 
 app.use(express.json());

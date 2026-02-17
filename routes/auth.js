@@ -42,10 +42,10 @@ router.post('/login', async (req, res) => {
 
     const { password: pwd, ...others } = user1._doc;
 
-    res.cookie("token", token, {
+  res.cookie("token", token, {
     httpOnly: true,
     secure: true,     
-    sameSite: "None"
+    sameSite:'none'
   })
   .status(200)
   .json(others);
