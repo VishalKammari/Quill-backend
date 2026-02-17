@@ -5,19 +5,19 @@ const cors = require('cors');
 const path = require("path");
 
 const app = express();
-
+app.use(cookieParser());
 app.set("trust proxy", 1);
 
 app.use(cors({
   origin: [
-    "quill-frontend-k2zpizrfu-visha9764s-projects.vercel.app",
+    "https://quill-frontend-k2zpizrfu-visha9764s-projects.vercel.app",
     "https://quill-git-main-visha9764s-projects.vercel.app",
     'quill-frontend-five.vercel.app'
   ],
   credentials: true
 }));
 
-app.use(cookieParser());
+
 app.use(express.json());
 
 app.use("/images", express.static(path.join(__dirname,"/images")));

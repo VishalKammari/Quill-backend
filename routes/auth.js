@@ -3,9 +3,6 @@ const router = express.Router();
 const user = require('../Models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-const isProd = process.env.NODE_ENV === "production";
-
 /* REGISTER */
 router.post('/register', async (req, res) => {
   try {
@@ -52,8 +49,8 @@ router.post('/login', async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: isProd,
-      sameSite: isProd ? "none" : "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 3 * 24 * 60 * 60 * 1000
     })
     .status(200)
@@ -70,8 +67,8 @@ router.get('/logout', async (req, res) => {
   try {
     res.clearCookie("token", {
       httpOnly: true,
-      secure: isProd,
-      sameSite: isProd ? "none" : "lax"
+      secure: true,
+      sameSite: "none"
     });
 
     res.status(200).json("User logged out successfully");
